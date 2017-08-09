@@ -1,0 +1,6 @@
+- name: apt | install repository
+  apt_repository:
+    repo: "deb {{ item.source }} ubuntu-trusty main"
+    state: present
+  with_flattened:
+    - "{{ apt_source_all }}"

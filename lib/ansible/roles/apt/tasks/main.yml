@@ -1,0 +1,5 @@
+- include: gpg.yml
+
+- include: repository.yml
+
+- include: package.yml

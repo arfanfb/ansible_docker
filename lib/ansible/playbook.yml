@@ -1,0 +1,39 @@
+---
+- name: Vocker
+  hosts: all
+  become: yes
+  vars:
+    applications:
+      repository:
+      -
+        name: api
+        install: 1
+        path: /vagrant/web/api
+        options:
+          provider: git
+          source: git@github.com: #Repository
+          revision: master
+          pre_install: [ ]
+          post_install: [ ]
+    apt:
+      gpg:
+      -
+        name: docker
+        keyserver: hkp://p80.pool.sks-keyservers.net:80
+        id: 58118E89F3A912897C070ADBF76221572C52609D
+
+  tasks:
+
+  roles:
+    - role: apt
+      apt_source_all:
+        - source:  https://apt.dockerproject.org/repo
+      apt_package_all:
+        - package: docker-engine
+        - package: python-pip
+        - package: git
+
+    - role: repository
+      when: "applications.repository is defined"
+
+    - role: docker

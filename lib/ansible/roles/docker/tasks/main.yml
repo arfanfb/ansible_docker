@@ -1,0 +1,28 @@
+- name: docker | add user mod
+  command: sudo usermod -aG docker vagrant
+
+- name: Docker-PY
+  pip:
+    name: "{{ item }}"
+  with_items:
+  - six==1.4
+  - docker-py==1.10.6
+
+- name: docker | create container
+  docker_image:
+    path: /vagrant
+    name: arfannginx
+    force: yes
+
+- name: docker | create container
+  docker_container:
+    name: nginxQ
+    image: arfannginx
+    pull: no
+    recreate: yes
+    exposed_ports:
+      - 80
+    published_ports:
+      - 80:80
+    volumes:
+      - /vagrant/web/api:/usr/share/nginx/html

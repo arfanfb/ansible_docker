@@ -1,0 +1,4 @@
+- name: apt | install package
+  apt: name="{{ item.package }}" update_cache=yes state=present force=yes
+  with_flattened:
+    - "{{ apt_package_all }}"

@@ -1,0 +1,6 @@
+- name: apt | add gpg key
+  apt_key:
+    keyserver: "{{ item.keyserver }}"
+    id: "{{ item.id }}"
+  with_items:
+    - "{{ apt.gpg }}"
