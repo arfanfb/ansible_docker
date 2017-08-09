@@ -34,4 +34,4 @@ Automation deploy docker with ansible
 
 ## License
 
-This box is built on top [Ansible](https://www.ansible.com/) so the license will refer to [Ansible Licence](https://en.wikipedia.org/wiki/Ansible_(software)), but the configuration it self is strictly confidential just for internal use on [Pasy](#) project.
+This box is built on top [Ansible](https://www.ansible.com/) so the license will refer to [Ansible Licence](https://en.wikipedia.org/wiki/Ansible_(software)), 
